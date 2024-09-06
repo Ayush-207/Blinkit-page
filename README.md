@@ -3,7 +3,8 @@
 Built the products screen of Blinkit using UIKit
 
 Installation 
-1. XCode 
+1. XCode
+
 No 3rd party dependencies used. 
 
 Keynotes - 
