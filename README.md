@@ -2,8 +2,11 @@
 
 Built the products screen of Blinkit using UIKit
 
-Installation 
-1. XCode
+Installation Steps
+1. Install XCode
+2. Install IOS simulator 
+3. Download the Zip file or clone it. 
+4. Open the xcodeproj file 
 
 No 3rd party dependencies used. 
 
