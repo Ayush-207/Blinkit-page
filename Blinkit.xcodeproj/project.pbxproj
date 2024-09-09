@@ -24,6 +24,8 @@
 		DB5890242C8A5AD3001CF562 /* ProductScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5890232C8A5AD3001CF562 /* ProductScreenViewModel.swift */; };
 		DB5890282C8A5B00001CF562 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5890272C8A5B00001CF562 /* Categories.swift */; };
 		DB5890312C8A5E17001CF562 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5890302C8A5E17001CF562 /* APIManager.swift */; };
+		E901D7092C8F0E55001FCB13 /* TopGreenStripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E901D7082C8F0E55001FCB13 /* TopGreenStripView.swift */; };
+		E901D70B2C8F1539001FCB13 /* BottomGreenStripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E901D70A2C8F1539001FCB13 /* BottomGreenStripView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		DB5890232C8A5AD3001CF562 /* ProductScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductScreenViewModel.swift; sourceTree = "<group>"; };
 		DB5890272C8A5B00001CF562 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		DB5890302C8A5E17001CF562 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		E901D7082C8F0E55001FCB13 /* TopGreenStripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopGreenStripView.swift; sourceTree = "<group>"; };
+		E901D70A2C8F1539001FCB13 /* BottomGreenStripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomGreenStripView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +165,8 @@
 			children = (
 				DB588F9C2C8923A7001CF562 /* CategoryCell.swift */,
 				DB5890122C895327001CF562 /* ProductCell.swift */,
+				E901D7082C8F0E55001FCB13 /* TopGreenStripView.swift */,
+				E901D70A2C8F1539001FCB13 /* BottomGreenStripView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -333,8 +339,10 @@
 				DB5890312C8A5E17001CF562 /* APIManager.swift in Sources */,
 				DB588F5E2C891D1E001CF562 /* AppDelegate.swift in Sources */,
 				DB5890132C895327001CF562 /* ProductCell.swift in Sources */,
+				E901D7092C8F0E55001FCB13 /* TopGreenStripView.swift in Sources */,
 				DB588F9D2C8923A7001CF562 /* CategoryCell.swift in Sources */,
 				DB58901D2C8A571F001CF562 /* Products.swift in Sources */,
+				E901D70B2C8F1539001FCB13 /* BottomGreenStripView.swift in Sources */,
 				DB5890112C894D1D001CF562 /* ProductScreenViewController.swift in Sources */,
 				DB5890282C8A5B00001CF562 /* Categories.swift in Sources */,
 				DB5890242C8A5AD3001CF562 /* ProductScreenViewModel.swift in Sources */,

@@ -7,6 +7,9 @@ class ProductScreenViewController: UIViewController {
     private var selectedCategoryIndex = 0
     private var scrollDirectionTop: Bool?
     
+    private var topGreenStrip: TopGreenStripView!
+    private var bottomGreenStrip: BottomGreenStripView!
+    
     private let categoryTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -24,8 +27,9 @@ class ProductScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         productsVM = ProductScreenViewModel()
-        setupUI()
         loadData()
+        setupUI()
+        setUpGreenStrip()
         reloadProductList()
     }
     
@@ -66,6 +70,42 @@ class ProductScreenViewController: UIViewController {
             let itemWidth = (availableWidth - totalSpacing) / itemsPerRow
             layout.itemSize = CGSize(width: itemWidth, height: 265)
         }
+    }
+    
+    private func setUpGreenStrip(){
+        topGreenStrip = TopGreenStripView(
+            categoryImage: UIImage(named: productsVM.categories.first?.image ?? "")!,
+            text: productsVM.categories.first?.name ?? "Next Category",
+            icon: UIImage(named: "chevron-up")!
+        )
+        topGreenStrip.translatesAutoresizingMaskIntoConstraints = false
+        topGreenStrip.isHidden = true
+        view.addSubview(topGreenStrip)
+        
+        NSLayoutConstraint.activate([
+            topGreenStrip.leadingAnchor.constraint(equalTo: productCollectionView.leadingAnchor),
+            topGreenStrip.trailingAnchor.constraint(equalTo: productCollectionView.trailingAnchor),
+            topGreenStrip.heightAnchor.constraint(equalToConstant: 150),
+            topGreenStrip.bottomAnchor.constraint(equalTo: productCollectionView.topAnchor, constant: -16)
+
+        ])
+        
+        bottomGreenStrip = BottomGreenStripView(
+            categoryImage: UIImage(named: productsVM.categories[1].image)!,
+            text: productsVM.categories[1].name,
+            icon: UIImage(named: "chevron-down")!
+        )
+        bottomGreenStrip.translatesAutoresizingMaskIntoConstraints = false
+        bottomGreenStrip.isHidden = true
+        view.addSubview(bottomGreenStrip)
+        
+        NSLayoutConstraint.activate([
+            bottomGreenStrip.leadingAnchor.constraint(equalTo: productCollectionView.leadingAnchor),
+            bottomGreenStrip.trailingAnchor.constraint(equalTo: productCollectionView.trailingAnchor),
+            bottomGreenStrip.heightAnchor.constraint(equalToConstant: 150),
+            bottomGreenStrip.topAnchor.constraint(equalTo: productCollectionView.bottomAnchor, constant: 30)
+
+        ])
     }
     
     private func loadData() {
@@ -113,13 +153,43 @@ extension ProductScreenViewController: UIScrollViewDelegate {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         let scrollViewHeight = scrollView.frame.height
-       
+        
         if offsetY < 0 {
-            scrollDirectionTop = true
+            if(selectedCategoryIndex>0){
+                let category = productsVM.categories[selectedCategoryIndex-1]
+                let name = category.name
+                let image = UIImage(named: category.image)!
+                topGreenStrip.updateData(name: name, image: image)
+                topGreenStrip.isHidden = false
+                topGreenStrip.transform = CGAffineTransform(translationX: 0, y: -offsetY)
+                if(offsetY < -80){
+                    scrollDirectionTop = true
+                }
+            } else {
+                topGreenStrip.isHidden = true
+                topGreenStrip.transform = CGAffineTransform(translationX: 0, y: -offsetY)
+            }
+            
         } else if offsetY > contentHeight - scrollViewHeight {
-            scrollDirectionTop = false
+            let value = offsetY - contentHeight + scrollViewHeight + 20
+            if(selectedCategoryIndex < productsVM.categories.count - 1){
+                let category = productsVM.categories[selectedCategoryIndex+1]
+                let name = category.name
+                let image = UIImage(named: category.image)!
+                bottomGreenStrip.updateData(name: name, image: image)
+                bottomGreenStrip.isHidden = false
+                bottomGreenStrip.transform = CGAffineTransform(translationX: 0, y: -value)
+                if(value>100){
+                    scrollDirectionTop = false
+                }
+            } else {
+                bottomGreenStrip.isHidden = true
+                bottomGreenStrip.transform = CGAffineTransform(translationX: 0, y: -value)
+            }
         } else {
             scrollDirectionTop = nil
+            topGreenStrip.isHidden = true
+            bottomGreenStrip.isHidden = true
         }
     }
     
