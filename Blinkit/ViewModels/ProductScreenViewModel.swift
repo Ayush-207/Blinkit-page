@@ -10,7 +10,6 @@ import UIKit
 class ProductScreenViewModel {
     var products: [Product] = []
     var categories: [Category] = []
-    var delegate: ProductScreenViewController?
     
     func fetchProducts(with categoryIndex: Int = 0) {
         let allProducts = APIManager.shared.getProducts()

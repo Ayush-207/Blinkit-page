@@ -2,7 +2,7 @@ import UIKit
 
 class ProductScreenViewController: UIViewController {
     
-    private var productsVM: ProductScreenViewModel!
+    private(set) var productsVM: ProductScreenViewModel!
     
     private var selectedCategoryIndex = 0
     private var scrollDirectionTop: Bool?
@@ -108,7 +108,7 @@ class ProductScreenViewController: UIViewController {
         ])
     }
     
-    private func loadData() {
+    func loadData() {
         productsVM.fetchCategories()
         productsVM.fetchProducts(with: selectedCategoryIndex)
     }
@@ -217,4 +217,3 @@ extension ProductScreenViewController: UICollectionViewDataSource, UICollectionV
         return cell
     }
 }
-

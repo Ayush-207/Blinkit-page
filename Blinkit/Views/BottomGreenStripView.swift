@@ -30,7 +30,6 @@ class BottomGreenStripView: UIView {
         setupUI(categoryImage: categoryImage, text: text, icon: icon)
     }
     
-    // MARK: - Setup UI
     private func setupUI(categoryImage: UIImage = UIImage(), text: String = "", icon: UIImage = UIImage()) {
         
         categoryBackgroundImageView = UIView()
@@ -41,14 +40,12 @@ class BottomGreenStripView: UIView {
         categoryBackgroundImageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(categoryBackgroundImageView)
         
-        // Circular category image
         categoryImageView = UIImageView(image: categoryImage)
         categoryImageView.contentMode = .scaleAspectFill
         categoryImageView.layer.masksToBounds = true
         categoryImageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(categoryImageView)
 
-        // Text label
         textLabel = UILabel()
         textLabel.text = text
         textLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
@@ -57,13 +54,11 @@ class BottomGreenStripView: UIView {
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(textLabel)
 
-        // Scroll icon
         scrollIconView = UIImageView(image: icon)
         scrollIconView.contentMode = .scaleAspectFit
         scrollIconView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(scrollIconView)
 
-        // Auto Layout
         NSLayoutConstraint.activate([
             
             scrollIconView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
@@ -93,7 +88,6 @@ class BottomGreenStripView: UIView {
         self.categoryImageView.image = image
     }
     
-    // MARK: - Gradient Background
     private func setupGradientBackground() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [UIColor.green.cgColor, UIColor.white.cgColor]
@@ -102,7 +96,6 @@ class BottomGreenStripView: UIView {
         self.layer.insertSublayer(gradientLayer, at: 0)
     }
     
-    // Ensure the gradient layer fits the view's bounds
     override func layoutSubviews() {
         super.layoutSubviews()
         if let gradientLayer = self.layer.sublayers?.first as? CAGradientLayer {

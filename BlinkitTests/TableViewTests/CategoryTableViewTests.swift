@@ -1,22 +1,29 @@
 //
-//  BlinkitTests.swift
+//  CategoryTableViewTests.swift
 //  BlinkitTests
 //
-//  Created by Ayush Goyal on 05/09/24.
+//  Created by Arsh Poddar on 10/09/24.
 //
 
 import XCTest
 @testable import Blinkit
 
-final class BlinkitTests: XCTestCase {
-
-    override func setUpWithError() throws {
-            
+final class CategoryTableViewTests: XCTestCase {
+    
+    static var vc: ProductScreenViewController!
+    
+    var vc: ProductScreenViewController {
+       return CategoryTableViewTests.vc
+    }
+    
+    override class func setUp() {
+        vc = ProductScreenViewController()
     }
 
-    override func tearDownWithError() throws {
+    func test_tableView_count(){
+        
     }
-
+    
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.

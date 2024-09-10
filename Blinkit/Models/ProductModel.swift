@@ -21,4 +21,5 @@ struct Product: Codable {
     let finalPrice: String
     let originalPrice: String
     let category: String
+    
 }

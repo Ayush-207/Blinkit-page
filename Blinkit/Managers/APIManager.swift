@@ -7,7 +7,14 @@
 
 import Foundation
 
-class APIManager {
+protocol APIManagerProtocol {
+    
+    func getProducts() -> [Product]
+    func getCategories() -> [Category]
+}
+
+
+class APIManager: APIManagerProtocol {
     
     private init() {}
         

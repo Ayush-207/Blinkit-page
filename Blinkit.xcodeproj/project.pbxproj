@@ -26,6 +26,10 @@
 		DB5890312C8A5E17001CF562 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5890302C8A5E17001CF562 /* APIManager.swift */; };
 		E901D7092C8F0E55001FCB13 /* TopGreenStripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E901D7082C8F0E55001FCB13 /* TopGreenStripView.swift */; };
 		E901D70B2C8F1539001FCB13 /* BottomGreenStripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E901D70A2C8F1539001FCB13 /* BottomGreenStripView.swift */; };
+		E9D763832C90797F00DC4222 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D763822C90797F00DC4222 /* NetworkRequest.swift */; };
+		E9D763862C907A8E00DC4222 /* CategoryTableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D763852C907A8E00DC4222 /* CategoryTableViewTests.swift */; };
+		E9D763892C907BD700DC4222 /* MockNetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D763882C907BD700DC4222 /* MockNetworkLayer.swift */; };
+		E9D7638B2C907DE200DC4222 /* MockDataLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D7638A2C907DE200DC4222 /* MockDataLayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +73,10 @@
 		DB5890302C8A5E17001CF562 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		E901D7082C8F0E55001FCB13 /* TopGreenStripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopGreenStripView.swift; sourceTree = "<group>"; };
 		E901D70A2C8F1539001FCB13 /* BottomGreenStripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomGreenStripView.swift; sourceTree = "<group>"; };
+		E9D763822C90797F00DC4222 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		E9D763852C907A8E00DC4222 /* CategoryTableViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewTests.swift; sourceTree = "<group>"; };
+		E9D763882C907BD700DC4222 /* MockNetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkLayer.swift; sourceTree = "<group>"; };
+		E9D7638A2C907DE200DC4222 /* MockDataLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +146,9 @@
 		DB588F732C891D24001CF562 /* BlinkitTests */ = {
 			isa = PBXGroup;
 			children = (
+				E9D763872C907BC100DC4222 /* New Group */,
+				E9D763842C907A7200DC4222 /* TableViewTests */,
+				E9D763812C90795700DC4222 /* NetworkRequest */,
 				DB588F742C891D24001CF562 /* BlinkitTests.swift */,
 			);
 			path = BlinkitTests;
@@ -203,6 +214,31 @@
 				DB5890302C8A5E17001CF562 /* APIManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		E9D763812C90795700DC4222 /* NetworkRequest */ = {
+			isa = PBXGroup;
+			children = (
+				E9D763822C90797F00DC4222 /* NetworkRequest.swift */,
+				E9D763882C907BD700DC4222 /* MockNetworkLayer.swift */,
+				E9D7638A2C907DE200DC4222 /* MockDataLayer.swift */,
+			);
+			path = NetworkRequest;
+			sourceTree = "<group>";
+		};
+		E9D763842C907A7200DC4222 /* TableViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				E9D763852C907A8E00DC4222 /* CategoryTableViewTests.swift */,
+			);
+			path = TableViewTests;
+			sourceTree = "<group>";
+		};
+		E9D763872C907BC100DC4222 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,6 +392,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9D7638B2C907DE200DC4222 /* MockDataLayer.swift in Sources */,
+				E9D763832C90797F00DC4222 /* NetworkRequest.swift in Sources */,
+				E9D763862C907A8E00DC4222 /* CategoryTableViewTests.swift in Sources */,
+				E9D763892C907BD700DC4222 /* MockNetworkLayer.swift in Sources */,
 				DB588F752C891D24001CF562 /* BlinkitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
