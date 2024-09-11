@@ -26,11 +26,16 @@ class ProductScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = true
         productsVM = ProductScreenViewModel()
         loadData()
         setupUI()
         setUpGreenStrip()
         reloadProductList()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
     }
     
     private func setupUI() {
@@ -104,7 +109,6 @@ class ProductScreenViewController: UIViewController {
             bottomGreenStrip.trailingAnchor.constraint(equalTo: productCollectionView.trailingAnchor),
             bottomGreenStrip.heightAnchor.constraint(equalToConstant: 150),
             bottomGreenStrip.topAnchor.constraint(equalTo: productCollectionView.bottomAnchor, constant: 30)
-
         ])
     }
     
@@ -116,7 +120,7 @@ class ProductScreenViewController: UIViewController {
     private func reloadProductList() {
         productCollectionView.reloadData()
         categoryTableView.reloadData()
-        productCollectionView.setContentOffset(.zero, animated: false)
+        productCollectionView.setContentOffset(.zero, animated: true)
     }
     
     private func updateSelectedCategory(to index: Int) {
@@ -125,6 +129,11 @@ class ProductScreenViewController: UIViewController {
             loadData()
             reloadProductList()
         }
+    }
+    
+    private func changeVC() {
+        let vc = ProductViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -153,7 +162,6 @@ extension ProductScreenViewController: UIScrollViewDelegate {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         let scrollViewHeight = scrollView.frame.height
-        
         if offsetY < 0 {
             if(selectedCategoryIndex>0){
                 let category = productsVM.categories[selectedCategoryIndex-1]
@@ -170,7 +178,7 @@ extension ProductScreenViewController: UIScrollViewDelegate {
                 topGreenStrip.transform = CGAffineTransform(translationX: 0, y: -offsetY)
             }
             
-        } else if offsetY > contentHeight - scrollViewHeight {
+        } else if offsetY > contentHeight - scrollViewHeight && contentHeight > scrollViewHeight{
             let value = offsetY - contentHeight + scrollViewHeight + 20
             if(selectedCategoryIndex < productsVM.categories.count - 1){
                 let category = productsVM.categories[selectedCategoryIndex+1]
@@ -207,6 +215,7 @@ extension ProductScreenViewController: UIScrollViewDelegate {
 
 extension ProductScreenViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        collectionView.setContentOffset(.zero, animated: true)
         return productsVM.products.count
     }
     
@@ -215,5 +224,9 @@ extension ProductScreenViewController: UICollectionViewDataSource, UICollectionV
         let products = productsVM.products
         cell.configure(with: products[indexPath.row])
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        changeVC()
     }
 }

@@ -17,6 +17,7 @@ class ProductViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = false
         configureUI()
         configureCompositionalLayout()
     }
@@ -29,6 +30,7 @@ class ProductViewController: UIViewController {
         collectionView.dataSource = self
         
         collectionView.register(ProductBannerCell.self, forCellWithReuseIdentifier: "ProductBannerCell")
+        collectionView.register(CategoryHeadingCell.self, forCellWithReuseIdentifier: "CategoryHeadingCell")
         collectionView.register(ProductDetailCell.self, forCellWithReuseIdentifier: "ProductDetailCell")
         collectionView.register(SimilarProductsCell.self, forCellWithReuseIdentifier: "SimilarProductsCell")
         collectionView.backgroundColor = .systemBackground
@@ -51,10 +53,12 @@ extension ProductViewController: UICollectionViewDelegate, UICollectionViewDataS
             case 0:
                 return AppLayout.shared.getProductBannerSection()
             case 1:
-                return AppLayout.shared.getProductDetailSection()
+                return AppLayout.shared.getCategoryLabels()
             case 2:
-                return AppLayout.shared.getSimilarProducts()
+                return AppLayout.shared.getProductDetailSection()
             case 3:
+                return AppLayout.shared.getSimilarProducts()
+            case 4:
                 return AppLayout.shared.getPeopleAlsoBought()
             default:
                 return AppLayout.shared.getProductBannerSection()
@@ -69,35 +73,32 @@ extension ProductViewController: UICollectionViewDelegate, UICollectionViewDataS
         switch section {
         case 0:
             return 3;
-        case 1:
-            return 1;
-        case 2:
-            return 1;
-        case 3:
-            return 1;
         default:
             return 1;
         }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 4;
+        return 5;
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductBannerCell", for: indexPath) as! ProductBannerCell
-            cell.configure(with: "sweetcorn")
+            cell.configure(with: "sweetcorn\(indexPath.row+1)")
             return cell;
         case 1:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductDetailCell", for: indexPath) as! ProductDetailCell
-            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryHeadingCell", for: indexPath) as! CategoryHeadingCell
+            cell.configure(category: "Fruits & Vegetables", subCategory: "Fruits & vegatables > Freshly cut & sprouts")
             return cell;
         case 2:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductDetailCell", for: indexPath) as! ProductDetailCell
+            return cell;
+        case 3:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SimilarProductsCell", for: indexPath) as! SimilarProductsCell
             return cell
-        case 3:
+        case 4:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SimilarProductsCell", for: indexPath) as! SimilarProductsCell
             cell.configure(with: "People also bought")
             return cell
