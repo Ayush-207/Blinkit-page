@@ -10,11 +10,11 @@ import UIKit
 class CategoryCell: UITableViewCell {
     
     private let sliderView: UIView = {
-           let view = UIView()
-           view.backgroundColor = .systemGreen
-           view.layer.cornerRadius = 10
-           view.translatesAutoresizingMaskIntoConstraints = false
-           return view
+       let view = UIView()
+       view.backgroundColor = .systemGreen
+       view.layer.cornerRadius = 10
+       view.translatesAutoresizingMaskIntoConstraints = false
+       return view
        }()
     
     private let categoryBackgroundImageView: UIView = {
@@ -36,7 +36,7 @@ class CategoryCell: UITableViewCell {
     private let categoryLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.numberOfLines = 0 // Allow multiple lines
+        label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 11)
         label.textColor = .darkGray
         label.translatesAutoresizingMaskIntoConstraints = false
